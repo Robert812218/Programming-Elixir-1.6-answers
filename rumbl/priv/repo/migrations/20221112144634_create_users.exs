@@ -1,14 +1,15 @@
 defmodule Rumbl.Repo.Migrations.CreateUsers do
-  use Ecto.Migration
+	use Ecto.Migration
+	
+	def change do
+		create table(:users) do
+			add :name, :string
+			add :username, :string, null: false
+			add :password_hash, :string
 
-  def change do
-    create table(:users) do
-      add :name, :string
-      add :email, :string
-      add :bio, :string
-      add :number_of_pets, :integer
+			timestamps()
+		end
 
-      timestamps()
-    end
-  end
+		create unique_index(:users, [:username])
+	end
 end
