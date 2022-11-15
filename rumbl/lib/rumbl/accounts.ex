@@ -114,4 +114,10 @@ defmodule Rumbl.Accounts do
 	def change_credential(%Credential{} = credential) do
 		Credential.changeset(credential, %{})
 	end
+
+	def create_user(attrs \\ %{}) do
+		%User{}
+		|> User.changeset(attrs)
+		|> Repo.insert()
+	end
 end
